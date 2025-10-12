@@ -1,0 +1,36 @@
+---
+import ProjectCard from './ProjectCard.astro';
+
+const projects = [
+  {
+    title: 'Kooton Calli E-Commerce',
+    description: 'E-commerce colaborativo de ropa con estilo mexicano, desarrollado con Java y Spring Boot, con carrito de compras, gestión de productos y panel de administración.',
+    image: '/images/projects/kooton-calli-home.webp',
+    technologies: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'Java', 'Spring Boot', 'Vercel', 'Node.js'],
+    liveUrl: 'https://kooton-calli.netlify.app',
+    githubUrl: 'https://github.com/Adrian-Ort/kooton-calli',
+  },
+  {
+    title: 'Portafolio Web Personal',
+    description: 'Portafolio web responsivo que muestra mis habilidades, educación, experiencia y proyectos, con un diseño moderno, limpio y fácil de navegar.',
+    image: '/images/projects/taskapp.jpg',
+    technologies: ['Astro', 'HTML', 'CSS', 'JavaScript', 'Vercel'],
+    liveUrl: '#',
+    githubUrl: '#',
+  },
+  
+];
+---
+
+<section id="projects" class="section" style="background-color: var(--bg-secondary);">
+  <div class="container">
+    <h2 class="section-title">Proyectos</h2>
+    <p class="section-subtitle">Proyectos de los que me siento orgulloso</p>
+    
+    <div class="projects-grid grid grid-3">
+      {projects.map(project => (
+        <ProjectCard {...project} />
+      ))}
+    </div>
+  </div>
+</section>

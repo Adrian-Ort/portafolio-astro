@@ -1,0 +1,51 @@
+---
+import BlogCard from './BlogCard.astro';
+
+const blogPosts = [
+  {
+    title: 'Building My First Full-Stack App',
+    description: 'Lessons learned while creating an e-commerce platform from scratch.',
+    image: '/images/blog/fullstack.jpg',
+    date: '2024-03-15',
+    slug: 'building-first-fullstack-app',
+  },
+  {
+    title: 'Learning TypeScript: My Journey',
+    description: 'How TypeScript improved my code quality and development experience.',
+    image: '/images/blog/typescript.jpg',
+    date: '2024-02-28',
+    slug: 'learning-typescript-journey',
+  },
+  {
+    title: 'CSS Grid vs Flexbox: When to Use What',
+    description: 'A practical guide to choosing the right layout system for your project.',
+    image: '/images/blog/css.jpg',
+    date: '2024-02-10',
+    slug: 'css-grid-vs-flexbox',
+  },
+];
+---
+
+<section id="blog" class="section">
+  <div class="container">
+    <h2 class="section-title">Blog</h2>
+    <p class="section-subtitle">Aprendizajes y proyectos en desarrollo</p>
+    
+    <div class="blog-grid grid grid-3">
+      {blogPosts.map(post => (
+        <BlogCard {...post} />
+      ))}
+    </div>
+    
+    <div class="blog-cta">
+      <a href="/blog" class="btn">Ver todos los posts</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .blog-cta {
+    text-align: center;
+    margin-top: 3rem;
+  }
+</style>

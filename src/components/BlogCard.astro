@@ -1,0 +1,106 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  image: string;
+  date: string;
+  slug: string;
+}
+
+const { title, description, image, date, slug } = Astro.props;
+
+const formatDate = (dateStr: string) => {
+  return new Date(dateStr).toLocaleDateString('es-MX', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+};
+---
+
+<article class="blog-card card">
+  <a href={`/blog/${slug}`} class="blog-link">
+    <div class="blog-image">
+      <img src={image} alt={title} />
+    </div>
+    <div class="blog-content">
+      <span class="blog-date">{formatDate(date)}</span>
+      <h3>{title}</h3>
+      <p>{description}</p>
+      <span class="read-more">Ver Más →</span>
+    </div>
+  </a>
+</article>
+
+<style>
+  .blog-card {
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+  }
+  
+  .blog-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: inherit;
+  }
+  
+  .blog-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+  
+  .blog-card:hover .blog-image img {
+    transform: scale(1.05);
+  }
+  
+  .blog-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .blog-date {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  .blog-content h3 {
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+    transition: color 0.3s;
+  }
+  
+  .blog-card:hover h3 {
+    color: var(--primary);
+  }
+  
+  .blog-content p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+  
+  .read-more {
+    color: var(--primary);
+    font-weight: 600;
+    transition: transform 0.3s;
+    display: inline-block;
+  }
+  
+  .blog-card:hover .read-more {
+    transform: translateX(4px);
+  }
+</style>

@@ -1,0 +1,117 @@
+---
+
+---
+
+<section id="home" class="hero">
+  <div class="container hero-content">
+    <div class="hero-text">
+      <h1 class="hero-title">
+        Hola, soy <span class="highlight">Adrian Ortega</span>
+      </h1>
+      <h2 class="hero-subtitle">Desarrollador Web Jr.</h2>
+      <p class="hero-description">
+        Desarrollador Web Jr. en formación, apasionado por crear experiencias
+        digitales modernas y funcionales.
+      </p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn">Explora mis proyectos</a>
+        <a
+          href="https://www.linkedin.com/in/adrian-ortegah"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-secondary btn-with-icon"
+        >
+          <i class="fab fa-linkedin"></i>
+          ¡Conectemos!
+        </a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="/images/profile.jpg" alt="Profile picture" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 6rem 0;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .highlight {
+    color: var(--primary);
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-description {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.8;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-image {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 50%;
+    box-shadow: var(--shadow-lg);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 4rem 0;
+    }
+
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+    }
+
+    .hero-buttons {
+      justify-content: center;
+    }
+
+    .hero-image img {
+      max-width: 250px;
+    }
+  }
+</style>

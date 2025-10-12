@@ -1,0 +1,164 @@
+---
+export async function getStaticPaths() {
+  return [
+    { params: { slug: 'building-first-fullstack-app' } },
+    { params: { slug: 'learning-typescript-journey' } },
+    { params: { slug: 'css-grid-vs-flexbox' } },
+  ];
+}
+
+import Layout from '../../layouts/Layout.astro';
+
+const { slug } = Astro.params;
+
+// Datos de ejemplo de posts
+const posts: Record<string, any> = {
+  'building-first-fullstack-app': {
+    title: 'Building My First Full-Stack App',
+    date: '2024-03-15',
+    image: '/images/blog/fullstack.jpg',
+    content: `
+      <p>Building my first full-stack application was both challenging and rewarding. Here's what I learned along the way...</p>
+      
+      <h2>Planning Phase</h2>
+      <p>The most important lesson: spend time planning your architecture before writing code.</p>
+      
+      <h2>Technology Stack</h2>
+      <p>I chose the MERN stack (MongoDB, Express, React, Node.js) for its flexibility.</p>
+      
+      <h2>Key Challenges</h2>
+      <ul>
+        <li>Implementing secure authentication</li>
+        <li>Managing state across components</li>
+        <li>Optimizing database queries</li>
+      </ul>
+    `
+  },
+  'learning-typescript-journey': {
+    title: 'Learning TypeScript: My Journey',
+    date: '2024-02-28',
+    image: '/images/blog/typescript.jpg',
+    content: `
+      <p>After years of writing JavaScript, I decided to learn TypeScript.</p>
+      <p>Here's how it changed my development workflow...</p>
+    `
+  },
+  'css-grid-vs-flexbox': {
+    title: 'CSS Grid vs Flexbox: When to Use What',
+    date: '2024-02-10',
+    image: '/images/blog/css.jpg',
+    content: `
+      <p>Understanding when to use CSS Grid versus Flexbox can significantly improve your layout code...</p>
+    `
+  }
+};
+
+const post = posts[slug as string];
+
+// Si el post no existe, retornar 404
+if (!post) {
+  return Astro.redirect('/404');
+}
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+}
+---
+
+<Layout title={post.title}>
+  <article class="blog-post">
+    <div class="container">
+      <div class="post-header">
+        <h1>{post.title}</h1>
+        <time datetime={post.date}>
+          {formatDate(post.date)}
+        </time>
+      </div>
+      
+      <img src={post.image} alt={post.title} class="post-image" />
+      
+      <div class="post-content" set:html={post.content} />
+      
+      <div class="post-footer">
+        <a href="/blog" class="btn btn-secondary">← Back to Blog</a>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .blog-post {
+    padding: 4rem 0;
+  }
+  
+  .blog-post .container {
+    max-width: 800px;
+  }
+  
+  .post-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .post-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .post-header time {
+    color: var(--text-secondary);
+    font-size: 1rem;
+  }
+  
+  .post-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    margin-bottom: 2rem;
+  }
+  
+  .post-content {
+    line-height: 1.8;
+    color: var(--text-primary);
+  }
+  
+  .post-content h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+  }
+  
+  .post-content p {
+    margin-bottom: 1.5rem;
+  }
+  
+  .post-content ul, .post-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+  }
+  
+  .post-content li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .post-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  
+  @media (max-width: 768px) {
+    .post-header h1 {
+      font-size: 2rem;
+    }
+    
+    .post-image {
+      height: 250px;
+    }
+  }
+</style>

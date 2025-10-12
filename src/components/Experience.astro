@@ -1,0 +1,114 @@
+---
+import { experience } from '../data/experience.js';
+---
+
+<section id="experience" class="section">
+  <div class="container">
+    <h2 class="section-title">Experiencia Profesional</h2>
+    <p class="section-subtitle">Mi trayectoria profesional.</p>
+    
+    <div class="experience-list">
+      {experience.map(job => (
+        <div class="experience-card card">
+          <div class="experience-header">
+            <div>
+              <h3>{job.title}</h3>
+              <h4>{job.company}</h4>
+            </div>
+            <span class="experience-date">{job.date}</span>
+          </div>
+          <p class="experience-description">{job.description}</p>
+          <ul class="experience-highlights">
+            {job.highlights.map(highlight => (
+              <li>{highlight}</li>
+            ))}
+          </ul>
+          <div class="experience-tech">
+            {job.technologies.map(tech => (
+              <span class="tech-badge">{tech}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .experience-list {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .experience-card {
+    padding: 2rem;
+  }
+  
+  .experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    gap: 1rem;
+  }
+  
+  .experience-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .experience-header h4 {
+    color: var(--primary);
+    font-weight: 600;
+  }
+  
+  .experience-date {
+    color: var(--text-secondary);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  
+  .experience-description {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+  
+  .experience-highlights {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+  
+  .experience-highlights li {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+  }
+  
+  .experience-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .tech-badge {
+    padding: 0.25rem 0.75rem;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+  
+  @media (max-width: 768px) {
+    .experience-header {
+      flex-direction: column;
+    }
+    
+    .experience-date {
+      align-self: flex-start;
+    }
+  }
+</style>

@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+
+const allPosts = [
+  {
+    title: 'Building My First Full-Stack App',
+    description: 'Lessons learned while creating an e-commerce platform from scratch.',
+    image: '/images/blog/fullstack.jpg',
+    date: '2024-03-15',
+    slug: 'building-first-fullstack-app',
+  },
+  {
+    title: 'Learning TypeScript: My Journey',
+    description: 'How TypeScript improved my code quality and development experience.',
+    image: '/images/blog/typescript.jpg',
+    date: '2024-02-28',
+    slug: 'learning-typescript-journey',
+  },
+  {
+    title: 'CSS Grid vs Flexbox: When to Use What',
+    description: 'A practical guide to choosing the right layout system for your project.',
+    image: '/images/blog/css.jpg',
+    date: '2024-02-10',
+    slug: 'css-grid-vs-flexbox',
+  },
+];
+---
+
+<Layout title="Blog - Your Name">
+  <section class="section">
+    <div class="container">
+      <h1 class="section-title">Blog</h1>
+      <p class="section-subtitle">Articles about web development, programming, and technology</p>
+      
+      <div class="blog-grid grid grid-3">
+        {allPosts.map(post => (
+          <BlogCard {...post} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,106 @@
+---
+import { skills } from '../data/skills.js';
+---
+
+<section id="skills" class="section">
+  <div class="container">
+    <h2 class="section-title">Skills</h2>
+    <p class="section-subtitle">Mis Herramientas y Tecnologías</p>
+    
+    <div class="skills-container">
+      <div class="skills-category">
+        <h3 class="category-title">Hard Skills</h3>
+        <div class="skills-grid">
+          {skills.hard.map(skill => (
+            <div class="skill-card">
+              <div class="skill-icon">
+                <i class={skill.icon}></i>
+              </div>
+              <h4 class="skill-name">{skill.name}</h4>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <div class="skills-category">
+        <h3 class="category-title">Soft Skills</h3>
+        <div class="soft-skills-grid">
+          {skills.soft.map(skill => (
+            <div class="soft-skill-card card">
+              <h4>{skill.name}</h4>
+              <p>{skill.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+  
+  .category-title {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+  
+  .skill-card {
+    text-align: center;
+  }
+  
+  .skill-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+  }
+  
+  .skill-name {
+    margin-bottom: 0.75rem;
+    font-size: 1.125rem;
+  }
+  
+  .skill-level {
+    background-color: var(--border);
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .skill-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: width 1s ease-out;
+  }
+  
+  .soft-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .soft-skill-card h4 {
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+  }
+  
+  .soft-skill-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+</style>
