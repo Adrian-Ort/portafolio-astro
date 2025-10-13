@@ -10,9 +10,9 @@ import { skills } from '../data/skills.js';
     <div class="skills-container">
       <div class="skills-category">
         <h3 class="category-title">Hard Skills</h3>
-        <div class="skills-grid">
-          {skills.hard.map(skill => (
-            <div class="skill-card">
+        <div class="skills-grid" id="hardSkillsGrid">
+          {skills.hard.map((skill, index) => (
+            <div class="skill-card" data-index={index}>
               <div class="skill-icon">
                 <i class={skill.icon}></i>
               </div>
@@ -20,17 +20,23 @@ import { skills } from '../data/skills.js';
             </div>
           ))}
         </div>
+        <div class="load-more-container">
+          <button class="btn btn-secondary" id="hardSkillsBtn">Ver más</button>
+        </div>
       </div>
       
       <div class="skills-category">
         <h3 class="category-title">Soft Skills</h3>
-        <div class="soft-skills-grid">
-          {skills.soft.map(skill => (
-            <div class="soft-skill-card card">
+        <div class="soft-skills-grid" id="softSkillsGrid">
+          {skills.soft.map((skill, index) => (
+            <div class="soft-skill-card card" data-index={index}>
               <h4>{skill.name}</h4>
               <p>{skill.description}</p>
             </div>
           ))}
+        </div>
+        <div class="load-more-container">
+          <button class="btn btn-secondary" id="softSkillsBtn">Ver más</button>
         </div>
       </div>
     </div>
@@ -75,19 +81,6 @@ import { skills } from '../data/skills.js';
     font-size: 1.125rem;
   }
   
-  .skill-level {
-    background-color: var(--border);
-    height: 8px;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  
-  .skill-bar {
-    height: 100%;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
-    transition: width 1s ease-out;
-  }
-  
   .soft-skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -103,4 +96,139 @@ import { skills } from '../data/skills.js';
     color: var(--text-secondary);
     font-size: 0.95rem;
   }
+  
+  .load-more-container {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  .load-more-container button {
+    display: none;
+  }
+  
+  @media (max-width: 768px) {
+    .skill-card[data-index="4"],
+    .skill-card[data-index="5"],
+    .skill-card[data-index="6"],
+    .skill-card[data-index="7"],
+    .skill-card[data-index="8"],
+    .skill-card[data-index="9"],
+    .skill-card[data-index="10"],
+    .skill-card[data-index="11"],
+    .soft-skill-card[data-index="4"],
+    .soft-skill-card[data-index="5"],
+    .soft-skill-card[data-index="6"],
+    .soft-skill-card[data-index="7"],
+    .soft-skill-card[data-index="8"],
+    .soft-skill-card[data-index="9"] {
+      display: none;
+    }
+    
+    .load-more-container button {
+      display: inline-block;
+    }
+  }
 </style>
+
+<script>
+  function initSkills() {
+    const hardSkillsBtn = document.getElementById("hardSkillsBtn") as HTMLButtonElement;
+    const hardSkillsGrid = document.getElementById("hardSkillsGrid") as HTMLDivElement;
+    const softSkillsBtn = document.getElementById("softSkillsBtn") as HTMLButtonElement;
+    const softSkillsGrid = document.getElementById("softSkillsGrid") as HTMLDivElement;
+    
+    let hardExpanded = false;
+    let softExpanded = false;
+    
+    function resetDisplay() {
+      hardExpanded = false;
+      softExpanded = false;
+      
+      const hardCards = hardSkillsGrid.querySelectorAll("[data-index]");
+      const softCards = softSkillsGrid.querySelectorAll("[data-index]");
+      
+      // Mostrar botones solo en móvil
+      if (window.innerWidth <= 768) {
+        hardCards.forEach((card, index) => {
+          const element = card as HTMLDivElement;
+          element.style.display = index < 4 ? "block" : "none";
+        });
+        softCards.forEach((card, index) => {
+          const element = card as HTMLDivElement;
+          element.style.display = index < 4 ? "block" : "none";
+        });
+        
+        if (hardCards.length > 4) {
+          hardSkillsBtn.style.display = "inline-block";
+        } else {
+          hardSkillsBtn.style.display = "none";
+        }
+        if (softCards.length > 4) {
+          softSkillsBtn.style.display = "inline-block";
+        } else {
+          softSkillsBtn.style.display = "none";
+        }
+      } else {
+        // Desktop: mostrar todos
+        hardCards.forEach((card) => {
+          const element = card as HTMLDivElement;
+          element.style.display = "block";
+        });
+        softCards.forEach((card) => {
+          const element = card as HTMLDivElement;
+          element.style.display = "block";
+        });
+        
+        hardSkillsBtn.style.display = "none";
+        softSkillsBtn.style.display = "none";
+      }
+      
+      hardSkillsBtn.textContent = "Ver más";
+      softSkillsBtn.textContent = "Ver más";
+    }
+    
+    function toggleHardSkills() {
+      const cards = hardSkillsGrid.querySelectorAll("[data-index]");
+      hardExpanded = !hardExpanded;
+      
+      cards.forEach((card, index) => {
+        const element = card as HTMLDivElement;
+        if (hardExpanded) {
+          element.style.display = "block";
+        } else {
+          element.style.display = index < 4 ? "block" : "none";
+        }
+      });
+      
+      hardSkillsBtn.textContent = hardExpanded ? "Ver menos" : "Ver más";
+    }
+    
+    function toggleSoftSkills() {
+      const cards = softSkillsGrid.querySelectorAll("[data-index]");
+      softExpanded = !softExpanded;
+      
+      cards.forEach((card, index) => {
+        const element = card as HTMLDivElement;
+        if (softExpanded) {
+          element.style.display = "block";
+        } else {
+          element.style.display = index < 4 ? "block" : "none";
+        }
+      });
+      
+      softSkillsBtn.textContent = softExpanded ? "Ver menos" : "Ver más";
+    }
+    
+    // Inicializar
+    resetDisplay();
+    
+    // Listeners
+    if (hardSkillsBtn) hardSkillsBtn.addEventListener("click", toggleHardSkills);
+    if (softSkillsBtn) softSkillsBtn.addEventListener("click", toggleSoftSkills);
+    
+    // Actualizar cuando cambies tamaño de pantalla
+    window.addEventListener("resize", resetDisplay);
+  }
+  
+  document.addEventListener("DOMContentLoaded", initSkills);
+</script>
