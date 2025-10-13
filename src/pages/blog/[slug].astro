@@ -1,9 +1,7 @@
 ---
 export async function getStaticPaths() {
   return [
-    { params: { slug: 'building-first-fullstack-app' } },
-    { params: { slug: 'learning-typescript-journey' } },
-    { params: { slug: 'css-grid-vs-flexbox' } },
+    { params: { slug: 'creando-portafolio-con-astro' } },
   ];
 }
 
@@ -13,44 +11,24 @@ const { slug } = Astro.params;
 
 // Datos de ejemplo de posts
 const posts: Record<string, any> = {
-  'building-first-fullstack-app': {
-    title: 'Building My First Full-Stack App',
-    date: '2024-03-15',
-    image: '/images/blog/fullstack.jpg',
+  'creando-portafolio-con-astro': {
+    title: 'Creando mi Portafolio Web con Astro',
+    date: '2025-10-12',
+    image: '/images/blog/portafolio-astro.webp',
     content: `
-      <p>Building my first full-stack application was both challenging and rewarding. Here's what I learned along the way...</p>
-      
-      <h2>Planning Phase</h2>
-      <p>The most important lesson: spend time planning your architecture before writing code.</p>
-      
-      <h2>Technology Stack</h2>
-      <p>I chose the MERN stack (MongoDB, Express, React, Node.js) for its flexibility.</p>
-      
-      <h2>Key Challenges</h2>
-      <ul>
-        <li>Implementing secure authentication</li>
-        <li>Managing state across components</li>
-        <li>Optimizing database queries</li>
-      </ul>
+      <p>Este proyecto representa la aplicación de los conocimientos adquiridos a lo largo de mi formación y experiencia 
+      como desarrollador web, combinando lo aprendido en mi <strong>Diplomado en Desarrollo Web en la UVM</strong>, 
+      el <strong>Bootcamp Full Stack Java en Generation México</strong> y diversos <strong>cursos independientes</strong>.</p>
+
+      <p>Decidí construir mi portafolio con <strong>Astro</strong>, aplicando <strong>HTML, CSS y JavaScript</strong> 
+      para crear un sitio moderno, responsive y optimizado. Además, utilicé <strong>Vercel</strong> para su despliegue, 
+      logrando un resultado profesional y de alto rendimiento.</p>
+
+      <p>Este proyecto me permitió integrar todo lo aprendido, afianzar mis habilidades técnicas y seguir creciendo 
+      como desarrollador web.</p>
     `
   },
-  'learning-typescript-journey': {
-    title: 'Learning TypeScript: My Journey',
-    date: '2024-02-28',
-    image: '/images/blog/typescript.jpg',
-    content: `
-      <p>After years of writing JavaScript, I decided to learn TypeScript.</p>
-      <p>Here's how it changed my development workflow...</p>
-    `
-  },
-  'css-grid-vs-flexbox': {
-    title: 'CSS Grid vs Flexbox: When to Use What',
-    date: '2024-02-10',
-    image: '/images/blog/css.jpg',
-    content: `
-      <p>Understanding when to use CSS Grid versus Flexbox can significantly improve your layout code...</p>
-    `
-  }
+  
 };
 
 const post = posts[slug as string];
@@ -61,7 +39,7 @@ if (!post) {
 }
 
 function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString('en-US', { 
+  return new Date(dateStr).toLocaleDateString('es-MX', { 
     year: 'numeric', 
     month: 'long', 
     day: 'numeric' 
@@ -84,7 +62,7 @@ function formatDate(dateStr: string) {
       <div class="post-content" set:html={post.content} />
       
       <div class="post-footer">
-        <a href="/blog" class="btn btn-secondary">← Back to Blog</a>
+        <a href="/blog" class="btn btn-secondary">← Volver</a>
       </div>
     </div>
   </article>

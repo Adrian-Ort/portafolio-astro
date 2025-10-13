@@ -4,26 +4,13 @@ import BlogCard from '../../components/BlogCard.astro';
 
 const allPosts = [
   {
-    title: 'Building My First Full-Stack App',
-    description: 'Lessons learned while creating an e-commerce platform from scratch.',
-    image: '/images/blog/fullstack.jpg',
-    date: '2024-03-15',
-    slug: 'building-first-fullstack-app',
+    title: 'Creando mi Portafolio Web con Astro',
+    description: 'Mi experiencia desarrollando un portafolio rápido, moderno y personal con Astro, HTML, CSS y JavaScript.',
+    image: '/images/blog/portafolio-astro.webp',
+    date: '2025-10-12',
+    slug: 'creando-portafolio-con-astro',
   },
-  {
-    title: 'Learning TypeScript: My Journey',
-    description: 'How TypeScript improved my code quality and development experience.',
-    image: '/images/blog/typescript.jpg',
-    date: '2024-02-28',
-    slug: 'learning-typescript-journey',
-  },
-  {
-    title: 'CSS Grid vs Flexbox: When to Use What',
-    description: 'A practical guide to choosing the right layout system for your project.',
-    image: '/images/blog/css.jpg',
-    date: '2024-02-10',
-    slug: 'css-grid-vs-flexbox',
-  },
+
 ];
 ---
 
@@ -31,13 +18,31 @@ const allPosts = [
   <section class="section">
     <div class="container">
       <h1 class="section-title">Blog</h1>
-      <p class="section-subtitle">Articles about web development, programming, and technology</p>
+      <p class="section-subtitle">Publicaciones sobre mis avances, proyectos y aprendizajes continuos en desarrollo web y tecnología.</p>
       
       <div class="blog-grid grid grid-3">
         {allPosts.map(post => (
           <BlogCard {...post} />
         ))}
       </div>
+
+      <div class="back-button-container">
+        <a href="/#blog" class="btn btn-secondary">Volver</a>
+      </div>
+
     </div>
   </section>
 </Layout>
+
+<style>
+  .blog-header {
+    margin-bottom: 3rem;
+  }
+
+  .back-button-container {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+</style>
