@@ -16,43 +16,43 @@ export const skills = {
   soft: [
     {
       name: 'Trabajo en equipo',
-      description: 'Analytical approach to breaking down complex challenges into manageable solutions'
+      description: 'Colaboro eficazmente para alcanzar objetivos comunes.'
     },
     {
       name: 'Empatía',
-      description: 'Effective communication and cooperation in cross-functional teams'
+      description: 'Escucho y comprendo las perspectivas de los demás.'
     },
     {
       name: 'Facilidad en el uso de tencologías',
-      description: 'Quick to learn new technologies and adjust to changing requirements'
+      description: 'Aprendo nuevas herramientas con rapidez y adaptabilidad.'
     },
     {
       name: 'Adaptabilidad',
-      description: 'Prioritizing tasks and meeting deadlines in fast-paced environments'
+      description: 'Me ajusto fácilmente a cambios y nuevos entornos.'
     },
     {
       name: 'Escucha activa',
-      description: 'Prioritizing tasks and meeting deadlines in fast-paced environments'
+      description: 'Atiendo y respondo con atención a las necesidades de los demás.'
     },
     {
       name: 'Autodidacta',
-      description: 'Prioritizing tasks and meeting deadlines in fast-paced environments'
+      description: 'Aprendo de forma constante y autónoma nuevas habilidades.'
     },
     {
       name: 'Interés por seguir aprendiendo',
-      description: 'Prioritizing tasks and meeting deadlines in fast-paced environments'
+      description: 'Busco mejorar continuamente mis conocimientos y prácticas.'
     },
     {
       name: 'Resolución de problemas',
-      description: 'Prioritizing tasks and meeting deadlines in fast-paced environments'
+      description: 'Analizo situaciones y encuentro soluciones efectivas.'
     },
     {
       name: 'Autónomo',
-      description: 'Prioritizing tasks and meeting deadlines in fast-paced environments'
+      description: 'Organizo mi trabajo y cumplo metas sin supervisión constante.'
     },
     {
       name: 'Atención al cliente',
-      description: 'Prioritizing tasks and meeting deadlines in fast-paced environments'
+      description: 'Brindo soluciones empáticas y eficaces a cada usuario.'
     },
   ],
 };
